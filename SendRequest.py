@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = "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"
+openai.api_key = "Enter your key here"
 
 generative_conversation = """
   T: Good morning. I’m Doctor Rogers.
