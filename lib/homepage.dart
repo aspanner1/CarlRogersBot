@@ -15,27 +15,20 @@ import 'dart:convert';
 Future<String> getCompletionOpenAi(String userInput) async {
   final client = Client();
   
-  final String apiKey = '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';
+  final String apiKey = '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';
   
-  final String url = 'https://api.openai.com/v1/models';
+  final String url = 'http://127.0.0.1:5000';
   
   Map decodedResponse = {};
   String displayText = '';
   
-  final Map<String, dynamic> bodyRequest = {
-        'model' : 'text-davinci-002',
-        'prompt' : userInput,
-        'max_tokens' : 100, 
-        'temperature' : 0.8,
-        'stop' : 'P:',
-        };
+  final String bodyRequest = jsonEncode({'user_input' : userInput});
   
     Response response = 
       await client.post(
         Uri.parse(url),
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':'Bearer $apiKey',
         },
         body: bodyRequest,
       );
@@ -178,7 +171,7 @@ class _homepageState extends State<homepage> {
                       width: 15,
                     ),
                     FloatingActionButton(
-                      onPressed: () {
+                      onPressed: () async {
                         _scrollController.animateTo(
                             _scrollController.position.maxScrollExtent,
                             duration: Duration(milliseconds: 300),
@@ -187,9 +180,12 @@ class _homepageState extends State<homepage> {
                             messageContent: myController.text,
                             messageType: "sender"
                           ));
+
+                        String rogers_response = await getCompletionOpenAi(myController.text);
+
                         messages.add(ChatMessage(
-                          messageContent: getCompletionOpenAi(myController.text),
-                          messageType: "receiver",
+                          messageContent: rogers_response,
+                          messageType: "sender",
                         ));
                         clearText();
                         setState(() {});

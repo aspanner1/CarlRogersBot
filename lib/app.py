@@ -3,7 +3,7 @@ import json
 import openai
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 generative_conversation = """
   T: Good morning. I’m Doctor Rogers.
