@@ -55,6 +55,13 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 60.0,
               ),
+              
+      Material(
+        
+        child: Image.network        ("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtutzqepv7vSde5mQLzT00fWEbynYBq70VaQ&usqp=CAU",
+                ),
+      ),
+              SizedBox(height: 30.0,),
               Text(
                 "Welcome $name",
                 style: TextStyle(
@@ -65,51 +72,12 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(
                 height: 20.0,
               ),
+              
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
                 child: Column(children: [
-                  TextFormField(
                   
-                    decoration: InputDecoration(
-                      //filled: true,
-                      //fillColor: Colors.white,
-                      hintText: ("Username"),
-                      hintStyle: TextStyle(color: Colors.white),
-                      labelText: ("Enter Username"),
-                      labelStyle: TextStyle(color: Colors.white),
-                    ),
-                    validator: (value){
-                      if (value==null || value.isEmpty) {
-                        return "Username cannot be empty";
-                      }  else {
-                        return null;
-                      }
-                    },
-                        
-                    onChanged: (value) {
-                      name = value;
-                      setState(() {});
-                    },
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: ("Password"),
-                      hintStyle: TextStyle(color: Colors.white),
-                      labelText: ("Enter Password"),
-                      labelStyle: TextStyle(color: Colors.white),
-                    ),
-                    validator: (value) {
-                      if (value==null || value.isEmpty) {
-                        return "Password cannot be empty";
-                      } else if (value.length < 6) {
-                        return "Password length cannot be less than 6";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
                   SizedBox(
                     height: 40.0,
                   ),
@@ -139,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 40.0,),
                    Material(
                     color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(changebutton ? 50 : 8),
+                    
                     child: InkWell(
                       
                       onTap: () {Navigator.push(context,MaterialPageRoute(builder: (context) =>  RegisterPage()));},
@@ -148,9 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.center,
                         width:  150,
                         height: 40,
-                        child: changebutton
-                            ? Icon(Icons.done, color: Colors.white)
-                            : Text(
+                        child:  Text(
                                 "Register",
                                 style: TextStyle(
                                     color: Colors.white,
