@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-
-/* Future Updates: Imports for Auth0
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:flutter_appauth/flutter_appauth.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-*/
+import 'package:mental_hacks/loginpage.dart';
 
 import 'homepage.dart';
 
@@ -22,10 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Homepage(),
+     
+      initialRoute: "/",
+      routes: {
+        "/":(context) => LoginPage(),
+      },
+     
     );
   }
 }
