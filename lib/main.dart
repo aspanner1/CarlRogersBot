@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mental_hacks/loginpage.dart';
 
 import 'homepage.dart';
 
@@ -15,10 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: homepage(),
+     
+      initialRoute: "/",
+      routes: {
+        "/":(context) => LoginPage(),
+      },
+     
     );
   }
 }
