@@ -2,7 +2,7 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   async:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: async
       url: "https://pub.dartlang.org"
@@ -95,15 +95,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.12+1"
-  gpt_3_dart:
-    dependency: "direct main"
-    description:
-      name: gpt_3_dart
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -221,4 +214,3 @@ packages:
     version: "2.1.2"
 sdks:
   dart: ">=2.17.3 <3.0.0"
-  flutter: ">=1.17.0"

@@ -1,10 +1,51 @@
 import 'package:flutter/material.dart';
 
-import 'package:gpt_3_dart/gpt_3_dart.dart';
+import 'package:http/http.dart' as http; 
 
-import '/generativeconv.dart';
+import 'dart:convert';
+import 'dart:async';
 
 import 'messageModel.dart';
+
+import 'package:http/http.dart';
+
+import 'package:http/http.dart';
+import 'dart:convert';
+
+Future<String> getCompletionOpenAi(String userInput) async {
+  final client = Client();
+  
+  final String apiKey = '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';
+  
+  final String url = 'https://api.openai.com/v1/models';
+  
+  Map decodedResponse = {};
+  String displayText = '';
+  
+  final Map<String, dynamic> bodyRequest = {
+        'model' : 'text-davinci-002',
+        'prompt' : userInput,
+        'max_tokens' : 100, 
+        'temperature' : 0.8,
+        'stop' : 'P:',
+        };
+  
+    Response response = 
+      await client.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization':'Bearer $apiKey',
+        },
+        body: bodyRequest,
+      );
+    
+    decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+    
+    displayText = decodedResponse['choices'][0]['text'];
+    
+    return displayText;
+}
 
 class homepage extends StatefulWidget {
   const homepage({Key? key}) : super(key: key);
@@ -14,10 +55,12 @@ class homepage extends StatefulWidget {
 }
 
 class _homepageState extends State<homepage> {
+  String user_input = ""; 
+  String final_response = ""; 
+
   ScrollController _scrollController = ScrollController();
   List<ChatMessage> messages = [];
   final myController = TextEditingController();
-
   void clearText() {
     myController.clear();
   }
@@ -142,15 +185,11 @@ class _homepageState extends State<homepage> {
                             curve: Curves.easeOut);
                         messages.add(ChatMessage(
                             messageContent: myController.text,
-                            messageType: "sender"));
+                            messageType: "sender"
+                          ));
                         messages.add(ChatMessage(
-                          messageContent: 
-                            main() async {
-                              OpenAI openAI = new OpenAI(apiKey: "YOUR_KEY_HERE");
-                              String complete = await openAI.complete("This is a test.", 10);
-                              return complete;
-                            },
-                            messageType: "receiver"
+                          messageContent: getCompletionOpenAi(myController.text),
+                          messageType: "receiver",
                         ));
                         clearText();
                         setState(() {});
