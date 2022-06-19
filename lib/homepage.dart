@@ -15,7 +15,7 @@ import 'dart:convert';
 Future<String> getCompletionOpenAi(String userInput) async {
   final client = Client();
   
-  final String apiKey = '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';
+  final String apiKey = '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';
   
   final String url = 'http://127.0.0.1:5000';
   
@@ -28,6 +28,7 @@ Future<String> getCompletionOpenAi(String userInput) async {
       await client.post(
         Uri.parse(url),
         headers: {
+          "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept",
           'Content-Type': 'application/json',
         },
         body: bodyRequest,
@@ -35,7 +36,7 @@ Future<String> getCompletionOpenAi(String userInput) async {
     
     decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
     
-    displayText = decodedResponse['choices'][0]['text'];
+    displayText = decodedResponse['message'];
     
     return displayText;
 }

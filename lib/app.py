@@ -195,7 +195,7 @@ def getResponse():
 
   generative_conversation = generative_conversation + f'{response_text}'
 
-  return jsonify(response_text)
+  return jsonify({"message":response_text})
 
 if __name__ == '__main__':
     app.run()
