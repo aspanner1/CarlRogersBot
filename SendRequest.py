@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = "Enter your key here"
+openai.api_key = "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"
 
 generative_conversation = """
   T: Good morning. I’m Doctor Rogers.
@@ -158,15 +158,19 @@ generative_conversation = """
   P: You know. I could really get angry.
   T: Mmm. mmm.
   P: I don't you know, I just ... that's not going to happen to me, you know. In a way, you
-  know, I don't want to love anybody like I did my father-in-law again, and for God's
+  know, I don't want to love anybody like I did and for God's
   sake, you know, that's, that's painful, but I know that's terribly sick too, that you have
   to love, you have to continue to love people. Or whatever."
+  T: Hello, my name is Dr. Rogers. I'm so glad to see you today.
 """
 
 def startSession():
   global generative_conversation
 
   activeSession = True
+
+  display_text = "Hello, my name is Dr. Rogers. I'm so glad to see you today."
+  print(display_text)
 
   while(activeSession):
 
@@ -178,11 +182,14 @@ def startSession():
       stop = "P:",
     )
 
-    response_text = response["choices"][0]["text"]
+    display_text = response["choices"][0]["text"]
 
-    user_input = input(response_text + "\n")
+    user_input = input(f'\n{display_text}\n')
 
-    generative_conversation = generative_conversation[len(user_input):] + f'{response_text}P:{user_input}'
+    generative_conversation = generative_conversation[len(user_input):]+f'P:{user_input}\n{display_text}T:'
+
+    if(user_input == "Quit" or user_input == "Q"):
+      activeSession = False
 
 
 startSession()

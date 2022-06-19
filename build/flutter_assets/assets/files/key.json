@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "celtic-protocol-353720",
+  "private_key_id": "bd784b9c6bea6d0968ea4a96f6655b4e05debb41",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDd80lc1aRkPPZL\ndWHPa+B1QiyWURLzmNzKrZ3Qt16kWgurvO/TWY3Pf6PcWqX0PIcQjj/Tiwuz/4Jm\nzpbLcVcgd3z2wvBQjUMr9Uvmin/4O9E11iLt1w7DHMenRgwnqstxwHpA8tioK6vb\nhxG3ofowIvCesQR4knX02ZlcNu224TEscARFAuhjDJX+JY/lCffLK5QJ3oI+RMr8\nXR1T36crgk3jwCluMRGaeIc3gADMqk/6HhyTwI/UZ7QwQI7J0wPaOPV0gUY9pqC3\nZ0u7v1EjBz5XnBqtN7Zv/uMVyrrC3eJf3Zd+SX8X+LVp10CwDNFw8h0A5xajhFKe\nb4kA/9GZAgMBAAECggEAEgnTcjkReu1oHaqKQCpbUWGxxVG3gZbF3a8N6XL4Z9EY\nVmUs9KINoB9BOQfLqbWVoJHUZs6hLTLcl/BoWbEkzJ20HqCp7qdcczZ6Fwrglah+\n5f+OUoLXpKHdKXTMSMOydH9D2wLMUEv5qVt+jsxvofk6UcYUlUa0ptQHM8hpuiLH\nwjGEa0PhkWVZxGWksTf31thwVMEa9ZQKwrIzkNzojK9W8auQRFKCvhOzDVTHY1or\nfhREHKwBaogZq65IbLtmbsLrCAmhQ1VUsh+Rarlrp5/boldlDtmiPdDL0IHHa2g3\nJAu00Mj8lCr1giHzIzVxJJducd38CYbg5F+TLqqYkQKBgQD5CE0/ycidp1TzVPeO\nCcgKNcfBTwFyq96go21Pj7RUELc6YhkXu7r1Vl2fYyymlL4mRqX5axFOIGzlv5JH\nouEiZ4p1eXkatwjMm/dvCK5SyQzDuu0BtKZhF18o7SWvA7o1/AilrZpplcLvmkef\njwYtTYoF9TJsw2OQADm9v4IeFQKBgQDkKQJLpSwfEAo3SLahWjl3V2AMu5h03zxh\n33N76WlOYcmrDIO2uByIotUMNjCuLaiDeI44nTMraHKiS/Z6yYTFAL0/zW+zEMTz\nU4vCw26Bj8CdVgekgJneQZ2tobwzJkCQpR/2MoSQD+Pjhn/Jo3kssy8Jkt7Z/n3r\nG2h1Mf5KdQKBgQCG/4gY50MYq6gyjMHyPr0xQ7w4v6JyTldOT6mnMqi31aPuQ1WE\n9yC/dIUmLTX8S6/UwgGhdvgXmR5PYY1jxhkzdFurmSEcaVKc0IPOri8J87E2vbNT\ndGGpSmksn3oJKQUd1LW/Up/dUvEswD7JcVgQ4PLMjgI60aS8YFLs2M8pjQKBgQCA\nSvrqdCb6FHfaHD3tPqF/lJcCsd2JIhl+4zm5nEbFd0EBuFi7voz027K2WiZHWo8d\n1gUKmoIyT1neHp6q7nOEnuTLYoYDh1NnizvUOTYDDkT9c2l6u4FJs1WpU39St5io\nfOEa+88Efprizjc+t3gkhWDWnkpHA83kDJZRB9p4HQKBgQDbsDJKnQ1b0KmOi8tU\n3Jit4m/9cGJxOQJYFnuKjGUwVFnb//iQ8GtJFV+sCcYxEzfVUQujKqrvIedRDW5x\nkIHfrOme+kPHW/63fpsQuNdNYC04PEQp2fu3pOYXSSfftUDJXcfoaa46cuEdcoW6\nSZk27QpGuZ8QeO7GayPrnw9i3A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dialogflow-integration@celtic-protocol-353720.iam.gserviceaccount.com",
+  "client_id": "115002391131454566671",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dialogflow-integration%40celtic-protocol-353720.iam.gserviceaccount.com"
+}
