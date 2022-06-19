@@ -3,7 +3,7 @@ import json
 import openai
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 generative_conversation = """
   T: Good morning. I’m Doctor Rogers.
@@ -194,6 +194,8 @@ def getResponse():
   response_text = response["choices"][0]["text"]
 
   generative_conversation = generative_conversation + f'{response_text}'
+
+  print(response_text)
 
   return jsonify({"message":response_text})
 

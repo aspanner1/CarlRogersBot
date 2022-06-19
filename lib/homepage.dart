@@ -182,10 +182,10 @@ class _homepageState extends State<homepage> {
                             messageType: "sender"
                           ));
 
-                        String rogers_response = await getCompletionOpenAi(myController.text);
+                        String roger_response = await getCompletionOpenAi(myController.text);
 
                         messages.add(ChatMessage(
-                          messageContent: rogers_response,
+                          messageContent: roger_response,
                           messageType: "sender",
                         ));
                         clearText();
