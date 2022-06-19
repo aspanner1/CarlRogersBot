@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart' as http; 
+import 'package:http/http.dart' as http;
+import 'package:mental_hacks/generative_conversation.dart';
 
 import 'dart:convert';
 import 'dart:async';
@@ -12,45 +15,66 @@ import 'package:http/http.dart';
 import 'package:http/http.dart';
 import 'dart:convert';
 
-Future<String> getCompletionOpenAi(String userInput) async {
+Future<String> getCompletionOpenAi(String userInput, bool isFirst) async {
   final client = Client();
-  
-  final String apiKey = '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';
-  
-  final String url = 'http://127.0.0.1:5000';
-  
+
+  const String apiKey = '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';
+
+  const String url = 'https://api.openai.com/v1/completions';
+
   Map decodedResponse = {};
-  String displayText = '';
-  
-  final String bodyRequest = jsonEncode({'user_input' : userInput});
-  
-    Response response = 
-      await client.post(
-        Uri.parse(url),
-        headers: {
-          "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept",
-          'Content-Type': 'application/json',
-        },
-        body: bodyRequest,
-      );
-    
-    decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-    
-    displayText = decodedResponse['message'];
-    
-    return displayText;
+  String displayText = 'Hello, nice to see you today.';
+
+  if (!isFirst) {
+    generativeConversation = generativeConversation.substring(
+          userInput.length,
+          generativeConversation.length,
+        ) +
+        'P:{$userInput}\nT:';
+  }
+
+  final Map<String, dynamic> bodyRequest = {
+    'model': 'text-davinci-002',
+    'prompt': generativeConversation,
+    'max_tokens': 100,
+    'temperature': 0.8,
+    'stop': 'P:',
+  };
+
+  Response response = await client.post(
+    Uri.parse(url),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $apiKey',
+    },
+    body: jsonEncode(bodyRequest),
+  );
+
+  decodedResponse = jsonDecode(response.body) as Map;
+
+  print(decodedResponse.toString());
+
+  displayText = decodedResponse['choices'][0]['text'];
+
+  if (!isFirst) {
+    generativeConversation = generativeConversation + displayText;
+  }
+
+  log(generativeConversation);
+
+  return displayText;
 }
 
-class homepage extends StatefulWidget {
-  const homepage({Key? key}) : super(key: key);
+class Homepage extends StatefulWidget {
+  const Homepage({Key? key}) : super(key: key);
 
   @override
-  State<homepage> createState() => _homepageState();
+  State<Homepage> createState() => _HomepageState();
 }
 
-class _homepageState extends State<homepage> {
-  String user_input = ""; 
-  String final_response = ""; 
+class _HomepageState extends State<Homepage> {
+  String user_input = "";
+  String final_response = "";
 
   ScrollController _scrollController = ScrollController();
   List<ChatMessage> messages = [];
@@ -64,6 +88,11 @@ class _homepageState extends State<homepage> {
     _scrollController = ScrollController();
 
     super.initState();
+    start();
+  }
+
+  Future<void> start() async {
+    await getCompletionOpenAi('', true);
   }
 
   Widget build(BuildContext context) {
@@ -179,14 +208,14 @@ class _homepageState extends State<homepage> {
                             curve: Curves.easeOut);
                         messages.add(ChatMessage(
                             messageContent: myController.text,
-                            messageType: "sender"
-                          ));
+                            messageType: "sender"));
 
-                        String roger_response = await getCompletionOpenAi(myController.text);
+                        String roger_response =
+                            await getCompletionOpenAi(myController.text, false);
 
                         messages.add(ChatMessage(
                           messageContent: roger_response,
-                          messageType: "sender",
+                          messageType: "receiver",
                         ));
                         clearText();
                         setState(() {});
